@@ -10,7 +10,7 @@ class CList
 	SNode* pFirst;
 	size_t count;
 	public
-	Clist() : pFirst(nullptr), count(0) {}
+	CList() : pFirst(nullptr), count(0) {}
 	void InsFirst(T val)
 	{
 		SNode *p = new SNode;
