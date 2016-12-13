@@ -30,11 +30,19 @@ class CList
 	{
 		if (IsFull())
 			throw val;
-		SNode *p = new SNode;
-		p->value = val;
-		p->pNext = pFirst;
-		pFirst = p;
-		count = 0;
+		if (IsEmpty())
+		{
+			pFirst->value = val;
+			pFirst->pNext = nullptr;
+		}
+		else
+		{
+			SNode *p = new SNode;
+			p->value = val;
+			p->pNext = pFirst;
+			pFirst = p;
+			count = 0;
+		}
 	}
 	void InsLast(T val)
 	{
