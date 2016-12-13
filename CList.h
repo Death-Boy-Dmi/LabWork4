@@ -4,6 +4,8 @@
 #define TNode SNode
 #define TList Clist
 
+#define MaxL 10000
+
 template <class T>
 class CList
 {
@@ -11,8 +13,23 @@ class CList
 	size_t count;
 	public
 	CList() : pFirst(nullptr), count(0) {}
+	~CList() 
+	{
+		while (IsEmpty() != true)
+			DelLast;
+	}
+	bool IsFull()
+	{
+		return count == MaxL;
+	}
+	bool IsEmpty()
+	{
+		return count == 0;
+	}
 	void InsFirst(T val)
 	{
+		if (IsFull())
+			throw val;
 		SNode *p = new SNode;
 		p->value = val;
 		p->pNext = pFirst;
@@ -21,6 +38,8 @@ class CList
 	}
 	void InsLast(T val)
 	{
+		if (IsFull())
+			throw val;
 		SNode *p = pFirst;
 		for (size_t i = 0; i < count - 1; i++)
 			p = p->pNext;
@@ -35,6 +54,8 @@ class CList
 	}
 	void Insert(T val, size_t pos)
 	{
+		if (IsFull())
+			throw val;
 		if (pos > count)
 			throw pos;
 		if (pos == 0)
@@ -91,6 +112,19 @@ class CList
 			delete p;
 			count--;
 		}
+	}
+	size_t GetCount()
+	{
+		return count;
+	}
+	T GetVal(size_t pos)
+	{
+		if (pos > count)
+			throw pos;
+		SNode *p = pFirst;
+		for (size_t i = 0; i < pos; i++)
+			p = p->pNext;
+		return p.val;
 	}
 	void ReVal(T val, size_t pos)
 	{
