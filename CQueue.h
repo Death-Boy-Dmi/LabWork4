@@ -10,7 +10,7 @@ class CQeue
 	CList mem;
 	size_t top;
 	size_t size;
-	public
+public:
 	CQeue() : top(-1), size(MaxQ) {}
 	CQeue(size_t s) : top(-1) 
 	{

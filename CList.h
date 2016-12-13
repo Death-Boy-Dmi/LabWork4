@@ -11,7 +11,7 @@ class CList
 {
 	SNode* pFirst;
 	size_t count;
-	public
+public:
 	CList() : pFirst(nullptr), count(0) {}
 	~CList() 
 	{
