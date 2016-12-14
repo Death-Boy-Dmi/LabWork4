@@ -146,9 +146,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CImCluster.h" />
+    <ClInclude Include="CImCPU.h" />
     <ClInclude Include="CList.h" />
     <ClInclude Include="CQueue.h" />
     <ClInclude Include="SNode.h" />
+    <ClInclude Include="STaskForCluster.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
