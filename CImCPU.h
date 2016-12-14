@@ -14,6 +14,5 @@ class ImCPU
 	unsigned int downtimeTacts;
 public:
 	void Statistics();
-
-	
+	void Process();
 };
