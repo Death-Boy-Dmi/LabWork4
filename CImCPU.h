@@ -10,7 +10,7 @@ class ImCPU
 	unsigned int tact;
 	CQeue<int> tasks;
 	unsigned int numCopmletedTask;
-	unsigned int numTaskQeue;
+	unsigned int numTaskQueue;
 	unsigned int numFailure;
 	unsigned int downtimeTacts;
 public:
