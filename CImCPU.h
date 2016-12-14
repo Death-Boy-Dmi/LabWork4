@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CQueue.h"
+#include "STaskForCPU.h"
 
 #define T 1000
 
