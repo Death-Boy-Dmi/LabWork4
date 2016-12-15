@@ -3,12 +3,12 @@
 #include "CQueue.h"
 #include "STaskForCPU.h"
 
-#define T 1000
+#define T0 1000
 
-class ImCPU
+class CImCPU
 {
 	unsigned int tact;
-	CQeue<int> tasks;
+	CQueue<int> tasks;
 	unsigned int numCopmletedTask;
 	unsigned int numTaskQueue;
 	unsigned int numFailure;

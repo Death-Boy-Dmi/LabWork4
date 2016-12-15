@@ -9,14 +9,14 @@
 template <class T>
 class CList
 {
-	SNode* pFirst;
+	SNode<T>* pFirst;
 	size_t count;
 public:
 	CList() : pFirst(nullptr), count(0) {}
 	~CList() 
 	{
 		while (IsEmpty() != true)
-			DelLast;
+			DelLast();
 	}
 	bool IsFull()
 	{
@@ -37,7 +37,7 @@ public:
 		}
 		else
 		{
-			SNode *p = new SNode;
+			SNode<T> *p = new SNode<T>;
 			p->value = val;
 			p->pNext = pFirst;
 			pFirst = p;
@@ -48,10 +48,10 @@ public:
 	{
 		if (IsFull())
 			throw val;
-		SNode *p = pFirst;
+		SNode<T> *p = pFirst;
 		for (size_t i = 0; i < count - 1; i++)
 			p = p->pNext;
-		SNode *temp = new SNode;
+		SNode<T> *temp = new SNode<T>;
 		tmp->vaule = val;
 		tmp->pNext = nullptr;
 		if (p != nullptr)
@@ -73,9 +73,9 @@ public:
 			InsLast(val);
 		else
 		{
-			SNode *temp = new SNode;
+			SNode<T> *temp = new SNode<T>;
 			tmp->vaule = val;
-			SNode *p = pFirst;
+			SNode<T> *p = pFirst;
 			for (size_t i = 0; i < pos - 1; i++)
 				p = p->pNext;
 			temp->pNext = p->pNext;
@@ -85,14 +85,14 @@ public:
 	}
 	void DelFirst()
 	{
-		SNode *p = pFirst;
+		SNode<T> *p = pFirst;
 		pFirst = p->pNext;
 		delete p;
 		count--;
 	}
 	void DelLast()
 	{
-		SNode *p = pFirst;
+		SNode<T> *p = pFirst;
 		for (size_t i = 0; i < count; i++)
 			p = p->pNext;
 		delete p;
@@ -109,13 +109,13 @@ public:
 			DelLast(val);
 		else
 		{
-			SNode *p = pFirst;
-			SNode *past = pFirst;
+			SNode<T> *p = pFirst;
+			SNode<T> *past = pFirst;
 			for (size_t i = 0; i < pos-1; i++)
 				past = past->pNext;
 			for (size_t i = 0; i < pos; i++)
 				p = p->pNext;
-			SNode *temp = p->Next;
+			SNode<T> *temp = p->Next;
 			past->pNext = temp;
 			delete p;
 			count--;
@@ -129,7 +129,7 @@ public:
 	{
 		if (pos > count)
 			throw pos;
-		SNode *p = pFirst;
+		SNode<T> *p = pFirst;
 		for (size_t i = 0; i < pos; i++)
 			p = p->pNext;
 		return p.val;

@@ -5,14 +5,14 @@
 #define MaxQ 10000
 
 template <class T>
-class CQeue
+class CQueue
 {
-	CList mem;
+	CList<T> mem;
 	size_t top;
 	size_t size;
 public:
-	CQeue() : top(-1), size(MaxQ) {}
-	CQeue(size_t s) : top(-1) 
+	CQueue() : top(-1), size(MaxQ) {}
+	CQueue(size_t s) : top(-1) 
 	{
 		if (s > MaxQ || s < 1)
 			throw s;
