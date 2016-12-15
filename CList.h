@@ -30,18 +30,13 @@ public:
 	{
 		if (IsFull())
 			throw val;
-		if (IsEmpty())
-		{
-			pFirst->value = val;
-			pFirst->pNext = nullptr;
-		}
 		else
 		{
 			SNode<T> *p = new SNode<T>;
 			p->value = val;
 			p->pNext = pFirst;
 			pFirst = p;
-			count = 0;
+			count++;
 		}
 	}
 	void InsLast(T val)
@@ -49,15 +44,15 @@ public:
 		if (IsFull())
 			throw val;
 		SNode<T> *p = pFirst;
+		SNode<T> *temp = new SNode<T>;
 		for (size_t i = 0; i < count - 1; i++)
 			p = p->pNext;
-		SNode<T> *temp = new SNode<T>;
-		tmp->vaule = val;
-		tmp->pNext = nullptr;
+		temp->value = val;
+		temp->pNext = nullptr;
 		if (p != nullptr)
-			p->pNext = tmp;
+			p->pNext = temp;
 		else
-			pFirst = tmp;
+			pFirst = temp;
 		count++;
 	}
 	void Insert(T val, size_t pos)
@@ -74,7 +69,7 @@ public:
 		else
 		{
 			SNode<T> *temp = new SNode<T>;
-			tmp->vaule = val;
+			temp->value = val;
 			SNode<T> *p = pFirst;
 			for (size_t i = 0; i < pos - 1; i++)
 				p = p->pNext;
@@ -85,6 +80,8 @@ public:
 	}
 	void DelFirst()
 	{
+		if (IsEmpty())
+			throw 0;
 		SNode<T> *p = pFirst;
 		pFirst = p->pNext;
 		delete p;
@@ -92,6 +89,8 @@ public:
 	}
 	void DelLast()
 	{
+		if (IsEmpty())
+			throw 0;
 		SNode<T> *p = pFirst;
 		for (size_t i = 0; i < count; i++)
 			p = p->pNext;
@@ -100,13 +99,16 @@ public:
 	}
 	void Delete(size_t pos)
 	{
+		if (IsEmpty())
+			throw 0;
+		else
 		if (pos > count)
 			throw pos;
 		if (pos == 0)
-			DelFirst(val);
+			DelFirst();
 		else
 		if (pos == count)
-			DelLast(val);
+			DelLast();
 		else
 		{
 			SNode<T> *p = pFirst;
@@ -115,7 +117,7 @@ public:
 				past = past->pNext;
 			for (size_t i = 0; i < pos; i++)
 				p = p->pNext;
-			SNode<T> *temp = p->Next;
+			SNode<T> *temp = p->pNext;
 			past->pNext = temp;
 			delete p;
 			count--;
@@ -132,11 +134,18 @@ public:
 		SNode<T> *p = pFirst;
 		for (size_t i = 0; i < pos; i++)
 			p = p->pNext;
-		return p.val;
+		T res = p->value;
+		return res;
 	}
 	void ReVal(T val, size_t pos)
 	{
-		Delete(pos);
-		Insert(val, pos);
+		/*Delete(pos);
+		Insert(val, pos);*/
+		if (pos > count)
+			throw pos;
+		SNode<T>* p = pFirst;
+		for (size_t i = 0; i < pos; i++)
+			p = p->pNext;
+		p->value = val;
 	}
 };
