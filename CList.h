@@ -43,17 +43,22 @@ public:
 	{
 		if (IsFull())
 			throw val;
-		SNode<T> *p = pFirst;
-		SNode<T> *temp = new SNode<T>;
-		for (size_t i = 0; i < count - 1; i++)
-			p = p->pNext;
-		temp->value = val;
-		temp->pNext = nullptr;
-		if (p != nullptr)
-			p->pNext = temp;
+		if (IsEmpty())
+			InsFirst(val);
 		else
-			pFirst = temp;
-		count++;
+		{
+			SNode<T> *p = pFirst;
+			SNode<T> *temp = new SNode<T>;
+			for (size_t i = 0; i < count - 1; i++)
+				p = p->pNext;
+			temp->value = val;
+			temp->pNext = nullptr;
+			if (p != nullptr)
+				p->pNext = temp;
+			else
+				pFirst = temp;
+			count++;
+		}
 	}
 	void Insert(T val, size_t pos)
 	{
@@ -99,15 +104,15 @@ public:
 	}
 	void Delete(size_t pos)
 	{
+		if (pos > count)
+			throw pos;
 		if (IsEmpty())
 			throw 0;
 		else
-		if (pos > count)
-			throw pos;
 		if (pos == 0)
 			DelFirst();
 		else
-		if (pos == count)
+		if (pos == count -1)
 			DelLast();
 		else
 		{

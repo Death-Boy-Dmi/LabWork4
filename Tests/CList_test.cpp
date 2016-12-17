@@ -165,3 +165,95 @@ TEST(CList, throw_when_use_ReVal_when_pos_bigger_count)
 
 	ASSERT_ANY_THROW(list.ReVal(5,5));
 }
+
+TEST(CList, can_right_use_IsEmpty)
+{
+	CList<int> list;
+
+	ASSERT_TRUE(list.IsEmpty());
+}
+
+TEST(CList, can_right_use_IsFull)
+{
+	CList<int> list;
+	for (size_t i = 0; i < MaxL; i++)
+		list.InsFirst(0);
+	ASSERT_TRUE(list.IsFull());
+}
+
+TEST(CList, can_right_use_InsFirst_and_GetVal)
+{
+	CList<int> list;
+	list.InsFirst(5);
+
+	ASSERT_TRUE(list.GetVal(0) == 5);
+}
+
+TEST(CList, can_right_use_InsLast)
+{
+	CList<int> list;
+	list.InsLast(5);
+	list.InsLast(3);
+	ASSERT_TRUE(list.GetVal(0) == 5);
+	ASSERT_TRUE(list.GetVal(1) == 3);
+}
+
+TEST(CList, can_right_use_Insert)
+{
+	CList<int> list;
+	list.InsLast(5);
+	list.InsLast(3);
+	list.Insert(13, 1);
+	ASSERT_TRUE(list.GetVal(1) == 13);
+}
+
+TEST(CList, can_right_use_DelFirst)
+{
+	CList<int> list;
+	list.InsFirst(5);
+	list.InsFirst(3);
+	list.InsFirst(13);
+
+	list.DelFirst();
+	ASSERT_TRUE(list.GetVal(0) == 3);
+}
+
+TEST(CList, can_right_use_DelLast)
+{
+	CList<int> list;
+	list.InsFirst(5);
+	list.InsFirst(3);
+	list.InsFirst(13);
+
+	list.DelLast();
+	ASSERT_TRUE(list.GetVal(1) == 3);
+}
+
+TEST(CList, can_right_use_Delete)
+{
+	CList<int> list;
+	list.InsFirst(5);
+	list.InsLast(3);
+	list.InsLast(13);
+
+	list.Delete(1);
+	ASSERT_TRUE(list.GetVal(1) == 13);
+}
+TEST(CList, can_right_use_GetCount)
+{
+	CList<int> list;
+	list.InsFirst(5);
+	list.InsLast(3);
+	list.InsLast(13);
+
+	ASSERT_TRUE(list.GetCount() == 3);
+}
+
+TEST(CList, can_right_use_ReVal)
+{
+	CList<int> list;
+	list.InsFirst(5);
+	list.ReVal(3, 0);
+
+	ASSERT_TRUE(list.GetVal(0) == 3);
+}
