@@ -38,9 +38,17 @@ public:
 		if (IsEmpty())
 			throw 0;
 		T val;
-		val = mem.GetVal(mem.GetCount());
+		val = mem.GetVal(mem.GetCount()-1);
 		mem.DelLast();
 		top--;
+		return val;
+	}
+	T GetVal()
+	{
+		if (IsEmpty())
+			throw 0;
+		T val;
+		val = mem.GetVal(mem.GetCount() - 1);
 		return val;
 	}
 };
