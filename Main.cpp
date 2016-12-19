@@ -3,5 +3,8 @@
 
 void main()
 {
+	CImCPU ImCPU;
 
+	ImCPU.Process();
+	ImCPU.Statistics();
 }

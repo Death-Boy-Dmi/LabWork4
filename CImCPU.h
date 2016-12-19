@@ -1,7 +1,6 @@
 #pragma once
 
 #include "CQueue.h"
-#include "STaskForCPU.h"
 
 #define t 1000
 
@@ -17,6 +16,7 @@ class CImCPU
 	unsigned int numIgnoredTasks;
 	unsigned int numDowntimeTacts;
 public:
+	CImCPU();
 	void Process();
 	void Statistics();
 };

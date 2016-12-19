@@ -33,9 +33,6 @@
     <ClInclude Include="CImCluster.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="STaskForCPU.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CImCluster.cpp">

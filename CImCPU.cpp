@@ -7,26 +7,27 @@ using namespace std;
 
 CImCPU::CImCPU(): tact(0), numCopmletedTask(0), numTaskQueue(0), numIgnoredTasks(0), numDowntimeTacts(0), work(false)
 {
-	cout << "Enter the threshold for the appearance of new task (0<= a <1)";
+	cout << "Enter the threshold for the appearance of new task (0<= a <1)\n\t";
 	cin >> markNewTask;
-	cout << "/n";
-	cout << "Enter the threshold for the completion of new task (0<= b <1)";
+	cout << "\n";
+	cout << "Enter the threshold for the completion of new task (0<= b <1)\n\t";
 	cin >> markCompletionTask;
-	cout << "/n" << "/n";
+	cout << "\n" << "\n";
 }
 
 void CImCPU::Process()
 {
 	for (tact; tact < t; tact++)
 	{
-		srand(time(NULL));
+		srand(time(0));
 		if (work == true)
-			if ((double)rand() / (double)RAND_MAX > markCompletionTask)
+			if (double ar = 1 / (0.0 + rand() % RAND_MAX) > markCompletionTask)
 			{
 				work = false;
 				numCopmletedTask++;
 			}
-		if ((double)rand() / (double)RAND_MAX > markNewTask)
+		srand(time(0));
+		if (double br = 1 / (1 + rand() % RAND_MAX) > markNewTask)
 			if (queueTasks.IsEmpty())
 				if (work == false)
 				{
