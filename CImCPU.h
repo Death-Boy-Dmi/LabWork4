@@ -1,19 +1,22 @@
 #pragma once
 
 #include "CQueue.h"
-#include "STaskForCPU.h"
 
-#define T0 1000
+#define t 1000
 
 class CImCPU
 {
 	unsigned int tact;
-	CQueue<int> tasks;
+	bool work;
+	CQueue<int> queueTasks;
+	double markNewTask;
+	double markCompletionTask;
 	unsigned int numCopmletedTask;
 	unsigned int numTaskQueue;
-	unsigned int numFailure;
-	unsigned int downtimeTacts;
+	unsigned int numIgnoredTasks;
+	unsigned int numDowntimeTacts;
 public:
-	void Statistics();
+	CImCPU();
 	void Process();
+	void Statistics();
 };

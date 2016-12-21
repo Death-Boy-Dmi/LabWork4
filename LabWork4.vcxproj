@@ -152,7 +152,11 @@
     <ClInclude Include="CQueue.h" />
     <ClInclude Include="SNode.h" />
     <ClInclude Include="STaskForCluster.h" />
-    <ClInclude Include="STaskForCPU.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CImCluster.cpp" />
+    <ClCompile Include="CImCPU.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
