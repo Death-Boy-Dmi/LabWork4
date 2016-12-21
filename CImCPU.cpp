@@ -22,13 +22,12 @@ void CImCPU::Process()
 	{
 		srand(time(0));
 		if (work == true)
-			if ((1.0*(rand() % t)) / t > markCompletionTask)
+			if ((1.0*(rand() % 10)) / 10 > markCompletionTask)
 			{
 				work = false;
 				numCopmletedTask++;
-				continue;
 			}
-		if ((1.0*(rand() % t)) / t > markNewTask)
+		if ((1.0*(rand() % 10)) / 10 > markNewTask)
 			if (queueTasks.IsEmpty())
 				if (work == false)
 				{
