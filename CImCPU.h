@@ -2,13 +2,14 @@
 
 #include "CQueue.h"
 
-#define t 1000
+#define t 10000
 
 class CImCPU
 {
+	unsigned int numTacts;
+	unsigned int sizeQueue;
 	unsigned int tact;
 	bool work;
-	CQueue<int> queueTasks;
 	double markNewTask;
 	double markCompletionTask;
 	unsigned int numCopmletedTask;

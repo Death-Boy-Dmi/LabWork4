@@ -7,20 +7,28 @@ using namespace std;
 
 CImCPU::CImCPU(): tact(0), numCopmletedTask(0), numTaskQueue(0), numIgnoredTasks(0), numDowntimeTacts(0), work(false)
 {
+	
 	setlocale(LC_ALL, "Russian");
+	cout << "Enter the number of tacts\n\t";
+	cin >> numTacts;
+	cout << "\n";
+	cout << "Enter the size of queue\n\t";
+	cin >> sizeQueue;
+	cout << "\n";
 	cout << "Enter the threshold for the appearance of new task (0<= a <1)\n\t";
 	cin >> markNewTask;
 	cout << "\n";
 	cout << "Enter the threshold for the completion of new task (0<= b <1)\n\t";
 	cin >> markCompletionTask;
-	cout << "\n" << "\n";
+	cout << "\n\n";
 }
 
 void CImCPU::Process()
 {
-	for (tact; tact < t; tact++)
+	CQueue<unsigned int> queueTasks(sizeQueue);
+	srand(time(0));
+	for (tact; tact < numTacts; tact++)
 	{
-		srand(time(0));
 		if (work == true)
 			if ((1.0*(rand() % 10)) / 10 > markCompletionTask)
 			{
