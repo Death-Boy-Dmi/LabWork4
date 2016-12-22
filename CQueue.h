@@ -2,7 +2,7 @@
 #include "SNode.h"
 #include "CList.h"
 
-#define MaxQ 3000
+#define MaxQ 10000
 
 template <class T>
 class CQueue

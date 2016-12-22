@@ -17,6 +17,7 @@ class CImCPU
 	unsigned int numIgnoredTasks;
 	unsigned int numDowntimeTacts;
 public:
+	CImCPU(unsigned int nTacts, unsigned int sQueue, double mNewTask, double mCompletionTask);
 	CImCPU();
 	void Process();
 	void Statistics();

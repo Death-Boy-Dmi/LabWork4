@@ -4,23 +4,22 @@
 
 using namespace std;
 
-
-CImCPU::CImCPU(): tact(0), numCopmletedTask(0), numTaskQueue(0), numIgnoredTasks(0), numDowntimeTacts(0), work(false)
+CImCPU::CImCPU() : tact(0), numCopmletedTask(0), numTaskQueue(0), numIgnoredTasks(0), numDowntimeTacts(0), work(false)
 {
-	
-	setlocale(LC_ALL, "Russian");
-	cout << "Enter the number of tacts\n\t";
-	cin >> numTacts;
-	cout << "\n";
-	cout << "Enter the size of queue\n\t";
-	cin >> sizeQueue;
-	cout << "\n";
-	cout << "Enter the threshold for the appearance of new task (0<= a <1)\n\t";
-	cin >> markNewTask;
-	cout << "\n";
-	cout << "Enter the threshold for the completion of new task (0<= b <1)\n\t";
-	cin >> markCompletionTask;
-	cout << "\n\n";
+	numTacts = t;
+	sizeQueue = MaxQ;
+	markNewTask = 0.5;
+	markCompletionTask = 0.5;
+}
+
+CImCPU::CImCPU(unsigned int nTacts, unsigned int sQueue, double mNewTask, double mCompletionTask) : tact(0), numCopmletedTask(0), numTaskQueue(0), numIgnoredTasks(0), numDowntimeTacts(0), work(false)
+{
+	if (nTacts > t || sQueue > MaxQ || mCompletionTask >= 1 || mNewTask >= 1 || nTacts < 0 || sQueue < 0 || mCompletionTask < 0 || mNewTask < 0)
+		throw "Incorrect values";
+	numTacts = nTacts;
+	sizeQueue = sQueue;
+	markNewTask = mNewTask;
+	markCompletionTask = mCompletionTask;
 }
 
 void CImCPU::Process()
