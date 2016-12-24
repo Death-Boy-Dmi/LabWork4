@@ -1,6 +1,5 @@
 #include <iostream>
 #include "CImCPU.h"
-#include "CImCluster.h"
 
 using namespace std;
 
